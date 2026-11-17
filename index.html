@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ismail's stories</title>
+  <meta name="description" content="Portfolio of Ismail Hafiane, NOC Analyst (N1) based in Morocco. Monitoring, incident management, AWS, OCI and Outscale." />
+  <meta name="author" content="Ismail Hafiane" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Ismail Hafiane - NOC Analyst & Cloud Enthusiast" />
+  <meta property="og:description" content="NOC Analyst (N1) in Morocco. 24/7 monitoring and incident management across AWS, OCI and Outscale." />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ismail Hafiane - NOC Analyst & Cloud Enthusiast" />
+  <meta name="twitter:description" content="NOC Analyst (N1) in Morocco. Monitoring, incident management and cloud support." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Fira+Code:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-controls="primary-nav"
+        aria-expanded="false"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#home" data-page="home">HOME</a></li>
+          <li><a href="#projects" data-page="projects">PROJECTS</a></li>
+          <li><a href="#about" data-page="about">ABOUT</a></li>
+          <li><a href="#uses" data-page="uses">USES</a></li>
+          <li><a href="#contact" data-page="contact">CONTACT</a></li>
+        </ul>
+      </nav>
+
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-pressed="true"
+        aria-label="Hacker mode on, switch to light mode"
+      >
+        H4CK3R M0D3 ON ☀️
+      </button>
+
+      <!-- CV quick download — desktop only (hidden on mobile) -->
+      <a class="nav-cv" href="assets/Ismail-Hafiane-CV.pdf" download aria-label="Download CV (PDF)">CV ↓</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HOME -->
+    <section id="home" class="page" hidden>
+      <div class="container">
+        <p class="prompt" aria-hidden="true">
+          <span class="prompt-user">ismail@terminal</span>:<span class="prompt-path">~</span>$ <span id="homeCommand"></span><span class="cursor" id="homeCursor" aria-hidden="true"></span>
+        </p>
+        <h1 class="visually-hidden">Ismail Hafiane — NOC Analyst</h1>
+        <p class="whoami" id="homeWhoami" aria-live="polite"></p>
+        <div class="home-actions">
+          <a class="btn" href="#projects">View projects</a>
+          <a class="btn btn-ghost" href="#contact">Contact me</a>
+          <!-- Same outline style as "Contact me"; downloads the CV (relative path for GitHub Pages) -->
+          <a class="btn btn-ghost" href="assets/Ismail-Hafiane-CV.pdf" download aria-label="Download CV (PDF)">Download CV</a>
+        </div>
+        <p class="status-line">status: open to work (NOC / SysAdmin / Cloud Support)</p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="page" hidden>
+      <div class="container">
+        <p class="prompt">
+          <span class="prompt-user">ismail@terminal</span>:<span class="prompt-path">~</span>$ ls ~/projects<span class="cursor" aria-hidden="true"></span>
+        </p>
+        <h1>Projects</h1>
+        <p class="lead">A few labs and experiments from the homelab and day-to-day NOC work.</p>
+        <div class="card-grid">
+          <!-- Real project from CV: Zabbix 7.2 deployment at Zen Networks (2026) -->
+          <article class="card project-card">
+            <h2>Zabbix 7.2 NOC Deployment</h2>
+            <p>Production deployment of Zabbix 7.2 (PostgreSQL, Nginx) at Zen Networks: N1/Supervisor RBAC roles, NOC dashboards and SLA tracking (99.9% target).</p>
+            <ul class="tags" aria-label="Technologies">
+              <li>Zabbix</li>
+              <li>PostgreSQL</li>
+              <li>Nginx</li>
+            </ul>
+            <!-- TO CHECK: internal work project — no public repo, link points to GitHub profile for now -->
+            <a class="card-link" href="https://github.com/ismail-hafiane" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </article>
+          <!-- Real project from CV: GoInfra (VMware infrastructure platform, 2024) -->
+          <article class="card project-card">
+            <h2>GoInfra — VMware Lab Platform</h2>
+            <p>Multi-VM deployment tool built with Go, Docker Compose, Prometheus and Grafana, automated with GitHub Actions CI/CD.</p>
+            <ul class="tags" aria-label="Technologies">
+              <li>Go</li>
+              <li>Docker</li>
+              <li>Prometheus</li>
+              <li>Grafana</li>
+            </ul>
+            <a class="card-link" href="https://github.com/ismail-hafiane/goinfra" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </article>
+          <!-- Real NOC experience from CV (not an open-source project) -->
+          <article class="card project-card">
+            <h2>Cloud NOC Operations</h2>
+            <p>24/7 supervision of ~50 critical servers across AWS, OCI and Outscale with Zabbix; ~40 tickets per shift handled in EasyVista within SLA.</p>
+            <ul class="tags" aria-label="Technologies">
+              <li>AWS</li>
+              <li>OCI</li>
+              <li>Outscale</li>
+              <li>EasyVista</li>
+            </ul>
+            <!-- TO CHECK: describes NOC work experience, not a published project — link is a placeholder -->
+            <a class="card-link" href="https://github.com/ismail-hafiane" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </article>
+        </div>
+
+        <section class="kb" aria-labelledby="kb-heading">
+          <h2 id="kb-heading">Knowledge Base &amp; Homelab Notes</h2>
+          <p class="lead">I believe in learning in public. Here is where I document my RHCSA prep and homelab experiments.</p>
+          <ul class="kb-links" role="list">
+            <li><a href="https://github.com/ismail-hafiane" target="_blank" rel="noopener noreferrer">[RHCSA Study Notes &amp; Bash Scripts]</a></li>
+            <li><a href="https://github.com/ismail-hafiane" target="_blank" rel="noopener noreferrer">[Building a Monitoring Stack with Centreon on Docker]</a></li>
+          </ul>
+        </section>
+      </div>
+    </section>
+
+    <!-- ABOUT (main page) -->
+    <section id="about" class="page" hidden>
+      <div class="container">
+        <p class="prompt">
+          <span class="prompt-user">ismail@terminal</span>:<span class="prompt-path">~</span>$ neofetch<span class="cursor" aria-hidden="true"></span>
+        </p>
+
+        <div class="neofetch" role="group" aria-label="Neofetch-style system profile">
+          <pre class="ascii-art" aria-label="ASCII art of a computer and server rack">      .----------------.
+     /  ____________  /|
+    /  /  ______  /  / |
+   /  /  / ____/ /  /  |
+  /  /  / /     /  /   |
+ /__/  /_/     /__/    |
+ |  |---------|  |     |
+ |  |  &gt;_     |  |     |
+ |  |         |  |    /
+ |  |_________|  |   /
+ |_______________|  /
+      ||      ||   /
+    __||______||__/
+   | [==] [==] [==] |
+   | [==] [==] [==] |
+   |________________|</pre>
+          <div class="neo-info">
+            <p class="neo-title"><span class="prompt-user">ismail</span><span class="muted">@</span><span class="prompt-path">terminal</span></p>
+            <p class="neo-sub">Network Operations &amp; Cloud Support</p>
+            <hr class="neo-rule" />
+            <dl class="neo-list">
+              <div><dt>OS:</dt><dd>Ismail Hafiane</dd></div>
+              <div><dt>Host:</dt><dd>Morocco</dd></div>
+              <div><dt>Kernel:</dt><dd>Monitoring &amp; Incident Management</dd></div>
+              <div><dt>Uptime:</dt><dd>1+ year in IT</dd></div>
+              <div><dt>Shell:</dt><dd>AWS | OCI | Outscale</dd></div>
+              <div><dt>WM:</dt><dd>Linux &amp; Networking</dd></div>
+              <div>
+                <dt>Colors:</dt>
+                <dd>
+                  <span class="color-row" aria-label="Eight terminal color swatches">
+                    <span class="swatch" style="background:#1a1a1a" title="Black"></span>
+                    <span class="swatch" style="background:#e06c75" title="Red"></span>
+                    <span class="swatch" style="background:#98c379" title="Green"></span>
+                    <span class="swatch" style="background:#e5c07b" title="Yellow"></span>
+                    <span class="swatch" style="background:#61afef" title="Blue"></span>
+                    <span class="swatch" style="background:#c678dd" title="Magenta"></span>
+                    <span class="swatch" style="background:#56b6c2" title="Cyan"></span>
+                    <span class="swatch" style="background:#abb2bf" title="White"></span>
+                  </span>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <article class="bio">
+          <h2>Bio</h2>
+          <p>Ismail Hafiane is a 23-year-old NOC Analyst based in Morocco. Driven by a deep curiosity for how networks and systems operate under the hood, he is currently building his expertise in infrastructure monitoring and incident management at Zen Networks Inc., working across AWS, OCI, and Outscale.</p>
+          <p>Beyond his daily shift, Ismail is a strong believer in continuous learning and the open-source mindset. He spends his free time breaking and fixing things in his homelab, preparing for his RHCSA, and automating repetitive tasks with Bash.</p>
+          <p>His ultimate vision? To evolve from NOC and SysAdmin roles into a fully-fledged Cloud Security Engineer, building infrastructure that is both resilient and secure.</p>
+        </article>
+
+        <section class="skills" aria-labelledby="skills-heading">
+          <h2 id="skills-heading">Skills &amp; Expertise</h2>
+          <div class="skills-grid">
+            <article class="card skill-card">
+              <h3>Monitoring &amp; Operations</h3>
+              <ul>
+                <li>Zabbix</li>
+                <li>Centreon</li>
+                <li>Grafana</li>
+                <li>EasyVista (ITSM)</li>
+                <li>ITIL v4 (notions)</li>
+                <li>24/7 shift work</li>
+              </ul>
+            </article>
+            <article class="card skill-card">
+              <h3>Cloud &amp; Infrastructure</h3>
+              <ul>
+                <li>AWS</li>
+                <li>OCI</li>
+                <li>Outscale (OTS)</li>
+                <li>VMware</li>
+                <li>Cloud monitoring</li>
+              </ul>
+            </article>
+            <article class="card skill-card">
+              <h3>Systems &amp; Networking</h3>
+              <ul>
+                <li>Linux (RHEL, CentOS, Ubuntu, Debian)</li>
+                <li>Windows Server</li>
+                <li>Active Directory</li>
+                <li>TCP/IP</li>
+                <li>DNS, DHCP, VPN</li>
+                <li>SSL/TLS</li>
+                <li>LAN/Wi-Fi support</li>
+              </ul>
+            </article>
+            <article class="card skill-card">
+              <h3>Tools &amp; Automation</h3>
+              <ul>
+                <li>Git &amp; GitHub</li>
+                <li>Bash scripting</li>
+                <li>Docker</li>
+                <li>Jenkins</li>
+                <li>Go</li>
+                <li>SSH</li>
+              </ul>
+            </article>
+            <article class="card skill-card">
+              <h3>Web &amp; Databases</h3>
+              <ul>
+                <li>Nginx</li>
+                <li>Apache</li>
+                <li>PostgreSQL</li>
+                <li>SQL Server</li>
+              </ul>
+            </article>
+            <article class="card skill-card">
+              <h3>Currently Learning</h3>
+              <ul>
+                <li>RHCSA</li>
+                <li>DevOps fundamentals</li>
+                <li>Homelab</li>
+              </ul>
+            </article>
+            <article class="card skill-card">
+              <h3>Languages</h3>
+              <ul>
+                <li>Arabic (native)</li>
+                <li>French (B2)</li>
+                <li>English (B1)</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="history" aria-labelledby="history-heading">
+          <h2 id="history-heading">Execution History</h2>
+          <div class="term-block">
+            <p class="term-cmd" aria-hidden="true">
+              <span class="prompt-user">ismail@terminal</span>:<span class="prompt-path">~</span>$ history | grep "career"
+            </p>
+            <ul class="history-list" role="list" aria-label="Career timeline">
+              <li>
+                <span class="hist-num" aria-hidden="true">1</span>
+                <span class="hist-date">2023-2025</span>
+                <span class="hist-desc">Graduated Bac+2 in Digital Infrastructure, Systems &amp; Networks (OFPPT, Settat)</span>
+              </li>
+              <li>
+                <span class="hist-num" aria-hidden="true">2</span>
+                <span class="hist-date">2025-Jul</span>
+                <span class="hist-desc">IT Technician internship at ELAVI — N1 user support &amp; LAN/Wi-Fi incidents</span>
+              </li>
+              <li>
+                <span class="hist-num" aria-hidden="true">3</span>
+                <span class="hist-date">2025-Nov</span>
+                <span class="hist-desc">Joined Zen Networks Inc. as NOC Analyst N1 (Casablanca)</span>
+              </li>
+              <li>
+                <span class="hist-num" aria-hidden="true">4</span>
+                <span class="hist-date">2025-Now</span>
+                <span class="hist-desc">Licence in Computer Systems &amp; Networks Engineering (ESTEM)</span>
+              </li>
+              <li>
+                <span class="hist-num" aria-hidden="true">5</span>
+                <span class="hist-date">2026-Now</span>
+                <span class="hist-desc">24/7 cloud incident management (AWS, OCI, Outscale) &amp; Zabbix 7.2 deployment</span>
+              </li>
+              <li>
+                <span class="hist-num" aria-hidden="true">6</span>
+                <span class="hist-date">Future</span>
+                <span class="hist-desc">Target -&gt; Cloud Engineer / Cloud Security Engineer</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- USES -->
+    <section id="uses" class="page" hidden>
+      <div class="container">
+        <p class="prompt">
+          <span class="prompt-user">ismail@terminal</span>:<span class="prompt-path">~</span>$ cat ~/.uses<span class="cursor" aria-hidden="true"></span>
+        </p>
+        <h1>/uses</h1>
+        <p class="lead">Hardware, software and tools from the desk and the NOC shift.</p>
+        <div class="uses-groups">
+          <section class="card">
+            <h2>Hardware</h2>
+            <ul>
+              <li>Laptop — daily driver for tickets and labs</li>
+              <li>Second screen — dashboards and documentation</li>
+              <li>USB-C hub + wired headset for 24/7 shifts</li>
+            </ul>
+          </section>
+          <section class="card">
+            <h2>Software</h2>
+            <ul>
+              <li>Linux (primary) / Windows when needed</li>
+              <li>VS Code + terminal (JetBrains Mono)</li>
+              <li>Firefox / Chrome for cloud consoles</li>
+            </ul>
+          </section>
+          <section class="card">
+            <h2>Tools</h2>
+            <ul>
+              <li>Zabbix, Centreon, EasyVista, cloud consoles (AWS, OCI, Outscale)</li>
+              <li>Git, GitHub, Bash, SSH</li>
+              <li>Homelab VMs for RHCSA and Docker practice</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="page" hidden>
+      <div class="container">
+        <p class="prompt">
+          <span class="prompt-user">ismail@terminal</span>:<span class="prompt-path">~</span>$ ./contact.sh<span class="cursor" aria-hidden="true"></span>
+        </p>
+        <h1>Contact</h1>
+        <p class="lead">Reach out from the terminal — or the usual human channels.</p>
+        <div class="contact-term" role="list">
+          <p role="listitem">
+            <span class="cmd">$ open github</span>
+            <a href="https://github.com/ismail-hafiane" target="_blank" rel="noopener noreferrer">github.com/ismail-hafiane</a>
+          </p>
+          <p role="listitem">
+            <span class="cmd">$ open linkedin</span>
+            <a href="https://www.linkedin.com/in/ismailhafiane7" target="_blank" rel="noopener noreferrer">linkedin.com/in/ismailhafiane7</a>
+          </p>
+          <p role="listitem">
+            <span class="cmd">$ send mail</span>
+            <a href="mailto:ismail.hafiane.it@gmail.com">ismail.hafiane.it@gmail.com</a>
+          </p>
+          <p role="listitem">
+            <span class="cmd">$ download cv</span>
+            <!-- Relative path, no leading slash — works on GitHub Pages -->
+            <a href="assets/Ismail-Hafiane-CV.pdf" download aria-label="Download CV (PDF)">Ismail-Hafiane-CV.pdf</a> <span class="pdf-note">(PDF)</span>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Ismail Hafiane</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

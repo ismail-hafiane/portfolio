@@ -1,0 +1,684 @@
+/* -------------------------------------------------------------------------
+   Ismail Hafiane — terminal portfolio
+   Dark (hacker) and light themes, responsive layout, no frameworks
+   ------------------------------------------------------------------------- */
+
+:root {
+  --font: "JetBrains Mono", "Fira Code", "Courier New", Courier, monospace;
+  --max: 900px;
+  --green: #33ff66;
+  --cyan: #5ce1e6;
+  --header-h: 64px;
+  --radius: 6px;
+  --transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Dark terminal (default) */
+html,
+html[data-theme="dark"] {
+  --bg: #000000;
+  --fg: #d8ffe4;
+  --muted: #7a9a82;
+  --header-bg: #050505;
+  --border: #1f6b38;
+  --card-bg: #050805;
+  --prompt: var(--green);
+  --label: var(--cyan);
+  --link: var(--green);
+  --btn-bg: var(--green);
+  --btn-fg: #001a08;
+  --glow: 0 0 14px rgba(51, 255, 102, 0.35);
+  --theme-color: #000000;
+  color-scheme: dark;
+}
+
+/* Light mode */
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #121212;
+  --muted: #5a5a5a;
+  --header-bg: #f4f4f4;
+  --border: #1a7a3a;
+  --card-bg: #fafafa;
+  --prompt: #0a7a32;
+  --label: #0b6e75;
+  --link: #0a7a32;
+  --btn-bg: #121212;
+  --btn-fg: #ffffff;
+  --glow: 0 0 12px rgba(10, 122, 50, 0.22);
+  --theme-color: #ffffff;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.site-header {
+  flex: 0 0 auto;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--link);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--prompt);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  padding: 8px 12px;
+  z-index: 100;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Header / nav */
+.site-header {
+  position: relative;
+  z-index: 20;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.nav-wrap {
+  max-width: calc(var(--max) + 80px);
+  margin: 0 auto;
+  min-height: var(--header-h);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+}
+
+.nav li:not(:last-child)::after {
+  content: "|";
+  color: var(--muted);
+  margin: 0 10px;
+  pointer-events: none;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--prompt);
+  border-bottom-color: var(--prompt);
+}
+
+.nav a.active {
+  font-weight: 700;
+}
+
+.theme-toggle,
+.menu-toggle {
+  font-family: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover,
+.menu-toggle:hover {
+  border-color: var(--prompt);
+  color: var(--prompt);
+  box-shadow: var(--glow);
+}
+
+/* CV quick-download link in the navbar (desktop only) */
+.nav-cv {
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.nav-cv:hover {
+  border-color: var(--prompt);
+  color: var(--prompt);
+  box-shadow: var(--glow);
+  text-decoration: none;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* Layout */
+.container {
+  width: min(100% - 40px, var(--max));
+  margin: 0 auto;
+  padding: 32px 0 72px;
+}
+
+.page[hidden] {
+  display: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 1.2em 0 0.6em;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h2 {
+  font-size: 1.2rem;
+  color: var(--prompt);
+}
+
+h3 {
+  font-size: 0.95rem;
+  color: var(--label);
+  margin-top: 0;
+}
+
+.lead {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Fake terminal prompt + blinking cursor */
+.prompt {
+  color: var(--fg);
+  margin: 0 0 1.75rem;
+  font-size: 1.05rem;
+  min-height: 1.6em;
+  letter-spacing: 0.02em;
+}
+
+.prompt-user {
+  color: var(--prompt);
+  font-weight: 700;
+}
+
+.prompt-path {
+  color: var(--label);
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1.05em;
+  margin-left: 2px;
+  background: var(--prompt);
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+  }
+
+  body {
+    transition: none;
+  }
+}
+
+/* Home */
+.whoami {
+  font-size: clamp(1.35rem, 4vw, 2.1rem);
+  font-weight: 700;
+  min-height: 2.6em;
+  margin: 12px 0 32px;
+  color: var(--fg);
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.status-line {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: var(--prompt);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--btn-bg);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  box-shadow: var(--glow);
+  text-decoration: none;
+  filter: brightness(1.08);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--prompt);
+  border-color: var(--border);
+}
+
+/* Neofetch block */
+.neofetch {
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) 1fr;
+  gap: 28px;
+  align-items: start;
+  margin: 8px 0 40px;
+}
+
+.ascii-art {
+  color: var(--prompt);
+  font-size: 11px;
+  line-height: 1.15;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.neo-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.neo-sub {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 4px 0 10px;
+}
+
+.neo-rule {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 0 0 12px;
+}
+
+.neo-list {
+  display: grid;
+  gap: 4px;
+}
+
+.neo-list div {
+  display: grid;
+  grid-template-columns: 7.5em 1fr;
+  gap: 8px;
+}
+
+.neo-list dt {
+  color: var(--label);
+  font-weight: 700;
+}
+
+.neo-list dd {
+  color: var(--fg);
+}
+
+.color-row {
+  display: inline-flex;
+  gap: 4px;
+  vertical-align: middle;
+}
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  border: 1px solid var(--border);
+}
+
+.bio p {
+  margin-bottom: 1em;
+}
+
+/* Execution History (career timeline as terminal output) */
+.term-block {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  transition: var(--transition);
+}
+
+.term-block:hover {
+  box-shadow: var(--glow);
+  border-color: var(--prompt);
+}
+
+.term-cmd {
+  color: var(--fg);
+  margin: 0 0 12px;
+  overflow-x: auto;
+}
+
+.history-list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.history-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.hist-num {
+  color: var(--muted);
+  min-width: 1ch;
+  text-align: right;
+}
+
+.hist-date {
+  color: var(--prompt);
+  font-weight: 700;
+  min-width: 9ch;
+  white-space: nowrap;
+}
+
+.hist-desc {
+  color: var(--fg);
+}
+
+/* Knowledge Base & Homelab Notes */
+.kb {
+  margin-top: 40px;
+}
+
+.kb .lead {
+  margin-bottom: 1rem;
+}
+
+.kb-links {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.kb-links li::before {
+  content: "> ";
+  color: var(--muted);
+}
+
+.kb-links a {
+  font-weight: 500;
+}
+
+/* Skills grid */
+.skills-grid,
+.card-grid,
+.uses-groups {
+  display: grid;
+  gap: 16px;
+}
+
+.skills-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.uses-groups {
+  grid-template-columns: 1fr;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  transition: var(--transition);
+}
+
+.skill-card:hover,
+.project-card:hover,
+.uses-groups .card:hover {
+  box-shadow: var(--glow);
+  border-color: var(--prompt);
+}
+
+.card ul {
+  margin-left: 1.1em;
+  color: var(--fg);
+}
+
+.card li + li {
+  margin-top: 4px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card h2,
+.uses-groups .card h2 {
+  margin-top: 0; /* remove extra top padding inside cards */
+  font-size: 1.05rem;
+}
+
+/* Small gray "(PDF)" note next to the CV download link */
+.pdf-note {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.project-card > p {
+  flex: 1 1 auto;
+}
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 12px 0 12px 0;
+}
+
+.tags li,
+.tags li + li {
+  margin: 0;
+}
+
+.tags li {
+  border: 1px solid var(--border);
+  color: var(--label);
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.card-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* Contact as commands */
+.contact-term {
+  display: grid;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.contact-term .cmd {
+  display: block;
+  color: var(--prompt);
+  margin-bottom: 4px;
+}
+
+.contact-term a {
+  word-break: break-all;
+}
+
+/* Footer */
+.site-footer {
+  padding: 24px 20px 32px;
+  text-align: center;
+}
+
+.site-footer p {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  .skills-grid,
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hide the navbar CV link on mobile (download stays available on Home & Contact) */
+  .nav-cv {
+    display: none;
+  }
+
+  .neofetch {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
+    display: none;
+    padding: 12px 20px 20px;
+  }
+
+  .nav.open {
+    display: block;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav li:not(:last-child)::after {
+    content: none;
+  }
+
+  .nav-wrap {
+    position: relative;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 980px) {
+  .skills-grid,
+  .card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
